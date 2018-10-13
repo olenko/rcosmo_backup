@@ -2,7 +2,7 @@
 % Please edit documentation in R/Statistics.R
 \name{plotAngDis}
 \alias{plotAngDis}
-\title{Plot angular scaterplots and means}
+\title{Plot angular scatterplots and means}
 \usage{
 plotAngDis(cmbdf, intensities = "I")
 }
@@ -13,13 +13,13 @@ plotAngDis(cmbdf, intensities = "I")
 \item{intensities}{A CMBDataFrame column with measured values}
 }
 \value{
-2x2 plot. The first row shows scaterplots. The second row gives
+2x2 plot. The first row shows scatterplots. The second row gives
 barplots of the corresponding means computed over bins. The first column
 corresponds to the values of theta  and the second one is for psi.
 }
 \description{
 For specified measurements from \code{\link{CMBDataFrame}} this function
-produces scaterplots and binned means versus theta and phi angles.
+produces scatterplots and binned means versus theta and phi angles.
 }
 \examples{
 ## Download the map first

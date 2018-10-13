@@ -120,7 +120,7 @@ nestSearch <- function(target, nside,
 
 #' nestSearch_step
 #'
-#' This function is inteded for use only with nestSearch.
+#' This function is intended for use only with nestSearch.
 #'
 #' @param target is the target point on S^2 in spherical coordinates.
 #' @param j2 is the target resolution.
@@ -219,10 +219,31 @@ pixelWindow <- function(j1, j2, pix.j1)
 #######################################################################
 
 
+#' Return index of \eqn{k}th ancestor pixel
+#'
+#' Gives the pixel at resolution \eqn{j - k} that contains \eqn{p},
+#' where \eqn{p} is specified at resolution \eqn{j} (notice
+#' it does not depend on \eqn{j}).
+#'
+#' @param p A pixel index specified in nested order.
+#' @param k A generation of an ancestor pixel.
+#'
+#' @examples
+#'
+#'  ancestor(4,2)
+#'  ancestor(17,2)
+#'
+#' @export
+ancestor <- function(p,k)
+{
+  as.integer((p-1) %/% 4^k + 1)
+}
+
 #' Return index of parent pixel
 #'
-#' Gives the pixel at resolution j - 1 that contains p,
-#' where p is specified at resoution j (notice it does not depend on j).
+#' Gives the pixel at resolution \eqn{j - 1} that contains \eqn{p},
+#' where \eqn{p} is specified at resolution \eqn{j} (notice it does
+#' not depend on \eqn{j}).
 #'
 #' @param p A pixel index specified in nested order.
 #'
@@ -234,13 +255,15 @@ pixelWindow <- function(j1, j2, pix.j1)
 #' @export
 parent <- function(p)
 {
-  (p - p %% 4 + (p %% 4 != 0)*4)/4
+  as.integer((p-1) %/% 4 + 1)
 }
+
+
 
 #' Return children of a pixel
 #'
 #' Gives four pixels at resolution j + 1 that are contained in p,
-#' where p is a pixel specified at resoution j (notice it does not depend on j).
+#' where p is a pixel specified at resolution j (notice it does not depend on j).
 #'
 #' @param p A pixel index specified in nested order.
 #'
@@ -251,7 +274,7 @@ parent <- function(p)
 children <- function(p)
 {
   if ( any(p > 0) ) {
-    1:4 + rep((p-1)*4, each = 4)
+    as.integer(1:4 + rep((p-1)*4, each = 4))
   } else { 1:12 }
 }
 
@@ -269,8 +292,7 @@ children <- function(p)
 #'
 #'@export
 siblings <- function(p) {
-  h <- (p - p %% 4 + (p %% 4 != 0)*4)/4
-  1:4 + (h-1)*4
+  h <- as.integer(1:4 + ((p - 1) %/% 4)*4)
 }
 
 
