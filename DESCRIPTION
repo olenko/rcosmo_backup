@@ -9,10 +9,10 @@ Authors@R: c(person("Daniel", "Fryer", role = c("aut", "cre"),
              email = "a.olenko@latrobe.edu.au"),
              person("Ming", "Li", role = "aut"),             
              person("Yuguang", "Wang", role = "aut"))
-Description: Handling and Analysing Spherical, Healpix and Cosmic Microwave Background 
-    data on a HEALPix grid.
+Description: Handling and Analysing Spherical, 
+      HEALPix and Cosmic Microwave Background data on a HEALPix grid.
 Depends: R (>= 3.4.0)
-License: GPL-2
+License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
@@ -24,7 +24,7 @@ Imports:
 	  cli (>= 1.0.0),
 	  entropy (>= 1.2.1),
 	  geoR (>= 1.7-5.2.1),
-          nnls (>= 1.4)
+    nnls (>= 1.4)
 Suggests:
     knitr,
     rmarkdown,
@@ -33,4 +33,3 @@ Suggests:
     gsl
 LinkingTo: Rcpp
 RoxygenNote: 6.1.0
-VignetteBuilder: R.rsp
